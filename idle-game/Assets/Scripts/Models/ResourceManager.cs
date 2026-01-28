@@ -5,12 +5,15 @@ namespace Game.Models
     [Serializable]
     public class ResourceManager : IResourceManager
     {
+        // Constants
         private const int STARTING_GOLD = 10;
         private const int STARTING_GEMS = 10;
         
+        // State
         public int Gold { get; private set; }
         public int Gems { get; private set; }
 
+        // Events
         public event Action OnResourcesChanged;
         
         public ResourceManager()

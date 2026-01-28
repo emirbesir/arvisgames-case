@@ -19,3 +19,4 @@ MonoBehaviour:
   ProductionDuration: 0
   GoldOutput: 8
   GemOutput: 4
+  BuildingPrefab: {fileID: 84232512349346656, guid: 1f6fa0a946e20434185cbba714a97051, type: 3}

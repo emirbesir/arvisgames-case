@@ -17,5 +17,8 @@ namespace Game.Config
         public float ProductionDuration;
         public int GoldOutput;
         public int GemOutput;
+        
+        [Header("Prefab")]
+        public GameObject BuildingPrefab;
     }
 }

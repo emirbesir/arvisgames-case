@@ -13,9 +13,7 @@ namespace Game.Views
         public void SetProgress(float normalizedProgress, float remainingTime)
         {
             _fillImage.fillAmount = Mathf.Clamp01(normalizedProgress);
-            
             _timerText.text = remainingTime.ToString("0.0") + "s";
-            
         }
     }
 }

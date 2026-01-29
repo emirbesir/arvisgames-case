@@ -19,6 +19,9 @@ namespace Game.Controllers
         private IResourceManager _resourceManager;
         private InputController _inputController;
         
+        // Track cards for cleanup
+        private List<BuildingCardView> _cards = new List<BuildingCardView>();
+        
         [Inject]
         public void Construct(IResourceManager resourceManager, InputController inputController)
         {
@@ -33,6 +36,8 @@ namespace Game.Controllers
             {
                 Destroy(child.gameObject);
             }
+            
+            _cards.Clear();
            
             foreach (var config in _buildingConfigs)
             {
@@ -41,7 +46,20 @@ namespace Game.Controllers
                 BuildingCardView card = Instantiate(_cardPrefab, transform);
                 card.Setup(config, _resourceManager);
                 card.OnDragRequested += HandleCardDrag;
+                _cards.Add(card);
             }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var card in _cards)
+            {
+                if (card != null)
+                {
+                    card.OnDragRequested -= HandleCardDrag;
+                }
+            }
+            _cards.Clear();
         }
 
         private void HandleCardDrag(BuildingDataSO config)

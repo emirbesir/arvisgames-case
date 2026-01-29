@@ -15,6 +15,7 @@ namespace Game.Models
 
         // Events
         public event Action OnResourcesChanged;
+        public event Action<int, int> OnResourcesDelta;
         
         public ResourceManager()
         {
@@ -26,6 +27,7 @@ namespace Game.Models
             Gold = STARTING_GOLD;
             Gems = STARTING_GEMS;
             OnResourcesChanged?.Invoke();
+            OnResourcesDelta?.Invoke(Gold, Gems);
         }
 
         public bool CanAfford(int goldCost, int gemCost)
@@ -40,6 +42,7 @@ namespace Game.Models
             Gold -= goldCost;
             Gems -= gemCost;
             OnResourcesChanged?.Invoke();
+            OnResourcesDelta?.Invoke(-goldCost, -gemCost);
         }
 
         public void AddResources(int goldAmount, int gemAmount)
@@ -47,6 +50,7 @@ namespace Game.Models
             Gold += goldAmount;
             Gems += gemAmount;
             OnResourcesChanged?.Invoke();
+            OnResourcesDelta?.Invoke(goldAmount, gemAmount);
         }
     }
 }

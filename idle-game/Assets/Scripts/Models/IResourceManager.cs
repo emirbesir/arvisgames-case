@@ -8,6 +8,7 @@ namespace Game.Models
         int Gems { get; }
         
         event Action OnResourcesChanged;
+        event Action<int, int> OnResourcesDelta;
         
         bool CanAfford(int goldCost, int gemCost);
         void SpendResources(int goldCost, int gemCost);

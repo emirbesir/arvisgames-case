@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace Game.Views
 {
-    public class BuildingCardView : MonoBehaviour, IPointerDownHandler
+    public class BuildingCardView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [Header("UI References")] 
         [SerializeField] private TMP_Text _buildingNameText;
@@ -19,9 +19,12 @@ namespace Game.Views
         // Config
         private BuildingDataSO _config;
         
-        // Dependencies
+        // Internal References
         private Button _button;
         private CanvasGroup _canvasGroup;
+        
+        // Dependencies
+        private ScrollRect _parentScrollRect;
         private IResourceManager _resourceManager;
 
         // Events
@@ -31,6 +34,7 @@ namespace Game.Views
         {
             _button = GetComponent<Button>();
             _canvasGroup = GetComponent<CanvasGroup>();
+            _parentScrollRect = GetComponentInParent<ScrollRect>();
         }
 
         public void Setup(BuildingDataSO config, IResourceManager resourceManager)
@@ -50,7 +54,13 @@ namespace Game.Views
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (_button.interactable) _parentScrollRect.enabled = false;
             OnDragRequested?.Invoke(_config);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (_button.interactable) _parentScrollRect.enabled = true;
         }
 
         private void OnDestroy()

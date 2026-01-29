@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDataSO
   BuildingName: Starter
   BuildingIcon: {fileID: 21300000, guid: ac07622442b5f284a89c5b62b969d513, type: 3}
-  GoldCost: 1
-  GemCost: 1
-  ProductionDuration: 3
-  GoldOutput: 3
+  GoldCost: 2
+  GemCost: 0
+  ProductionDuration: 2
+  GoldOutput: 4
   GemOutput: 0
   BuildingPrefab: {fileID: 84232512349346656, guid: 131949d0d12f0f048aa9a5bc6e8448b1, type: 3}

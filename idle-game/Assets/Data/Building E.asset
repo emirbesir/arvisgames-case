@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDataSO
   BuildingName: Advanced Gems
   BuildingIcon: {fileID: 21300000, guid: 3c19f570b96a0c24aba01e9d94386a9e, type: 3}
-  GoldCost: 50
-  GemCost: 20
-  ProductionDuration: 12
+  GoldCost: 150
+  GemCost: 30
+  ProductionDuration: 8
   GoldOutput: 0
-  GemOutput: 10
+  GemOutput: 8
   BuildingPrefab: {fileID: 84232512349346656, guid: a7a7becd48f19434e930a5187d198973, type: 3}

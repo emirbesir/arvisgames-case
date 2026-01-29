@@ -9,6 +9,9 @@ namespace Game.Installers
     {
         public override void InstallBindings()
         {
+            // Save System
+            Container.Bind<SaveSystem>().AsSingle();
+            
             // Models
             Container.Bind<IResourceManager>().To<ResourceManager>().AsSingle();
             Container.Bind<IGridMap>().To<GridMap>().AsSingle();
@@ -19,7 +22,7 @@ namespace Game.Installers
             // Controllers
             Container.Bind<InputController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<FloatingTextController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<BuildingPanelController>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<BuildingPanelController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<GameController>().FromComponentInHierarchy().AsSingle();
         }
     }

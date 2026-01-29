@@ -1028,6 +1028,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 974f766c827b39243a9189c921147b4e, type: 2}
   - {fileID: 11400000, guid: e6fd82f42d9d53e4eae368db642d5255, type: 2}
   - {fileID: 11400000, guid: 8e40ce11896d6634e99eba3815a48b76, type: 2}
+  - {fileID: 11400000, guid: 29e8780b48dc9924fbfde1155e67efad, type: 2}
   _cardPrefab: {fileID: 2207380300377230651, guid: c2c18abeb4baa1146b54d147fd1c961f, type: 3}
 --- !u!1 &1321814753
 GameObject:
@@ -1789,6 +1790,7 @@ GameObject:
   - component: {fileID: 2061149312}
   - component: {fileID: 2061149311}
   - component: {fileID: 2061149310}
+  - component: {fileID: 2061149313}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -1898,6 +1900,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061149308}
   m_CullTransparentMesh: 1
+--- !u!114 &2061149313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061149308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd47a5806d10672419669b119037c4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -29,6 +29,14 @@ namespace Game.Models
             OnResourcesChanged?.Invoke();
             OnResourcesDelta?.Invoke(Gold, Gems);
         }
+        
+        public void LoadState(int gold, int gems)
+        {
+            Gold = gold;
+            Gems = gems;
+            OnResourcesChanged?.Invoke();
+            OnResourcesDelta?.Invoke(Gold, Gems);
+        }
 
         public bool CanAfford(int goldCost, int gemCost)
         {

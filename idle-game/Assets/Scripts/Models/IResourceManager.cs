@@ -14,5 +14,6 @@ namespace Game.Models
         void SpendResources(int goldCost, int gemCost);
         void AddResources(int goldAmount, int gemAmount);
         void Reset();
+        void LoadState(int gold, int gems);
     }
 }

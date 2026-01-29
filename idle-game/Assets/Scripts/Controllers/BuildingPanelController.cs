@@ -48,5 +48,17 @@ namespace Game.Controllers
         {
             _inputController.StartDrag(config);
         }
+        
+        public BuildingDataSO GetConfigByName(string name)
+        {
+            foreach (var config in _buildingConfigs)
+            {
+                if (config.BuildingName == name)
+                {
+                    return config;
+                }
+            }
+            return null;
+        }
     }
 }

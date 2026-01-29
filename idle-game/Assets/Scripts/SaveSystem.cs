@@ -1,53 +1,55 @@
 using UnityEngine;
-using Game.Models;
 using System.IO;
 
-public class SaveSystem
+namespace Game.Models
 {
-    private const string SAVE_FILE_NAME = "save.json";
-    
-    private string SaveFilePath => Path.Combine(Application.persistentDataPath, SAVE_FILE_NAME);
-
-    public void SaveGame(IResourceManager resources, IGridMap grid)
+    public class SaveSystem
     {
-        SaveData data = new SaveData();
-        data.Gold = resources.Gold;
-        data.Gems = resources.Gems;
+        private const string SAVE_FILE_NAME = "save.json";
         
-        for (int x = 0; x < grid.Width; x++)
+        private string SaveFilePath => Path.Combine(Application.persistentDataPath, SAVE_FILE_NAME);
+
+        public void SaveGame(IResourceManager resources, IGridMap grid)
         {
-            for (int y = 0; y < grid.Height; y++)
+            SaveData data = new SaveData();
+            data.Gold = resources.Gold;
+            data.Gems = resources.Gems;
+            
+            for (int x = 0; x < grid.Width; x++)
             {
-                var tile = grid.GetTile(x, y);
-                if (tile.IsOccupied)
+                for (int y = 0; y < grid.Height; y++)
                 {
-                    data.Tiles.Add(new TileSaveData
+                    var tile = grid.GetTile(x, y);
+                    if (tile.IsOccupied)
                     {
-                        X = x,
-                        Y = y,
-                        BuildingName = tile.OccupyingBuildingName
-                    });
+                        data.Tiles.Add(new TileSaveData
+                        {
+                            X = x,
+                            Y = y,
+                            BuildingName = tile.OccupyingBuildingName
+                        });
+                    }
                 }
             }
+
+            string json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(SaveFilePath, json);
         }
 
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(SaveFilePath, json);
-    }
-
-    public SaveData LoadGame()
-    {
-        if (!File.Exists(SaveFilePath)) return null;
-
-        string json = File.ReadAllText(SaveFilePath);
-        return JsonUtility.FromJson<SaveData>(json);
-    }
-
-    public void DeleteSave()
-    {
-        if (File.Exists(SaveFilePath))
+        public SaveData LoadGame()
         {
-            File.Delete(SaveFilePath);
+            if (!File.Exists(SaveFilePath)) return null;
+
+            string json = File.ReadAllText(SaveFilePath);
+            return JsonUtility.FromJson<SaveData>(json);
+        }
+
+        public void DeleteSave()
+        {
+            if (File.Exists(SaveFilePath))
+            {
+                File.Delete(SaveFilePath);
+            }
         }
     }
 }

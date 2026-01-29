@@ -43,7 +43,7 @@ namespace Game.Controllers
             if (_config.ProductionDuration > 0)
             {
                 float progress = _productionTimer / _config.ProductionDuration;
-                _view.SetProgress(progress);
+                _view.SetProgress(progress, _config.ProductionDuration - _productionTimer);
                 
                 if (_productionTimer >= _config.ProductionDuration)
                 {
@@ -66,7 +66,7 @@ namespace Game.Controllers
             
             if (_config.GemOutput > 0)
             {
-                _textController.SpawnText($"+{_config.GemOutput} Gem", textPosition, Color.cyan);
+                _textController.SpawnText($"+{_config.GemOutput} Gems", textPosition, Color.cyan);
             }
         }
     }

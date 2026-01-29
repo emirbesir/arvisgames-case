@@ -63,7 +63,7 @@ namespace Game.Controllers
             if (_gridMap.PlaceBuilding(x, y, _currentDraggingConfig.BuildingName))
             {
                 _resourceManager.SpendResources(_currentDraggingConfig.GoldCost, _currentDraggingConfig.GemCost);
-                _gridMapView.PlaceBuildingVisual(x, y, _currentDraggingConfig.BuildingPrefab);
+                _gridMapView.PlaceBuildingVisual(x, y, _currentDraggingConfig);
             }
 
             // Cleanup

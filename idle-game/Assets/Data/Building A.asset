@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cd25adb9e21a141bde7ed82ffc30ad, type: 3}
   m_Name: Building A
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDataSO
-  BuildingName: Building A
+  BuildingName: Starter
   BuildingIcon: {fileID: 21300000, guid: ac07622442b5f284a89c5b62b969d513, type: 3}
   GoldCost: 1
-  GemCost: 0
-  ProductionDuration: 0
-  GoldOutput: 1
-  GemOutput: 1
+  GemCost: 1
+  ProductionDuration: 3
+  GoldOutput: 3
+  GemOutput: 0
   BuildingPrefab: {fileID: 84232512349346656, guid: 131949d0d12f0f048aa9a5bc6e8448b1, type: 3}

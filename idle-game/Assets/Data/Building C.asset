@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cd25adb9e21a141bde7ed82ffc30ad, type: 3}
   m_Name: Building C
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDataSO
-  BuildingName: Building C
+  BuildingName: Hybrid
   BuildingIcon: {fileID: 21300000, guid: 18e729b2e1e587f4cbbf902d3cffb1fa, type: 3}
-  GoldCost: 3
-  GemCost: 2
-  ProductionDuration: 0
-  GoldOutput: 0
-  GemOutput: 4
+  GoldCost: 10
+  GemCost: 5
+  ProductionDuration: 5
+  GoldOutput: 5
+  GemOutput: 1
   BuildingPrefab: {fileID: 84232512349346656, guid: 0dbf108291490e841bf7ef6f20693883, type: 3}

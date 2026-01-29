@@ -1,5 +1,7 @@
+using Game.Config;
 using UnityEngine;
 using Game.Models;
+using Game.Controllers;
 using Zenject;
 
 namespace Game.Views
@@ -23,10 +25,13 @@ namespace Game.Views
         private IGridMap _gridMap;
         private Camera _mainCamera;
         
+        private DiContainer _container;
+        
         [Inject]
-        public void Construct(IGridMap gridMap)
+        public void Construct(IGridMap gridMap, DiContainer container)
         {
             _gridMap = gridMap;
+            _container = container;
             _mainCamera = Camera.main;
             
             GenerateGridVisuals();
@@ -73,6 +78,13 @@ namespace Game.Views
             if (_currentGhost != null) DestroyGhost();
 
             _currentGhost = Instantiate(prefab, transform);
+            
+            var logic = _currentGhost.GetComponent<BuildingController>();
+            Destroy(logic);
+            
+            var view = _currentGhost.GetComponent<BuildingView>();
+            Destroy(view);
+            
             _ghostRenderer = _currentGhost.GetComponentInChildren<SpriteRenderer>();
             
             Color c = _ghostRenderer.color;
@@ -107,10 +119,17 @@ namespace Game.Views
             _ghostRenderer = null;
         }
 
-        public void PlaceBuildingVisual(int x, int y, GameObject prefab)
+        public void PlaceBuildingVisual(int x, int y, BuildingDataSO config)
         {
-            GameObject building = Instantiate(prefab, transform);
+            GameObject building = _container.InstantiatePrefab(config.BuildingPrefab, transform);
             building.transform.position = GetWorldPosition(x, y);
+            
+            var controller = building.GetComponent<BuildingController>();
+            if (controller != null)
+            {
+                controller.Initialize(config);
+            }
+            
             _tileViews[x, y].UpdateSprite(true);
         }
         
@@ -119,8 +138,8 @@ namespace Game.Views
         {
             Gizmos.color = Color.cyan;
             
-            float width = _gridMap.Width * _cellSize;
-            float height = _gridMap.Height * _cellSize;
+            float width = 10 * _cellSize;
+            float height = 10 * _cellSize;
 
             Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 1));
         }
